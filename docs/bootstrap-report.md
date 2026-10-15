@@ -37,4 +37,17 @@ GitHub audit evidence and precise proposed settings are in
 Remaining risks include unprotected main branches, disabled public native secret
 protection, unverified private security features and incomplete production evidence.
 An initial PR cannot enforce its own checks on main before approval and merge.
-Validation outcomes and the PR/commit references are supplied in the final handoff.
+## Validation evidence
+
+Local repository guardrails, YAML lint, Git whitespace validation, environment/key
+ignore checks and workflow syntax/permission/pinning checks passed. The application
+working tree remains clean. Infrastructure changes are committed and pushed on the
+feature branch; main was not changed.
+
+[PR #1](https://github.com/MySaji/mysaji-infra/pull/1) is open for review. Foundation
+commit: `1f5b2dc`. Both Repository validation and Secret scan passed on GitHub for
+that commit on push and PR. The [PR validation run](https://github.com/MySaji/mysaji-infra/actions/runs/38799900408)
+includes checksum verification and Gitleaks scans of publishable files and reachable
+Git history; no findings were reported. The local Windows release download stalled
+and was cancelled; the successful hosted Linux scan supplies full-scan evidence.
+No secret-scanning result is claimed for the private application repository.
