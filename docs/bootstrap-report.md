@@ -17,7 +17,8 @@ documents: architecture.md, operations.md, github-governance.md and this report.
 
 Repository guardrails, YAML validation and redacted secret detection are implemented.
 CI Actions and Gitleaks digests were verified against official GitHub API refs/assets.
-No deployment, live resource modification or GitHub access change is included.
+No deployment, live infrastructure modification or GitHub access change is included.
+Approved subsequent repository security changes are recorded below.
 GitHub audit evidence and precise proposed settings are in
 [governance](github-governance.md); confirmed technology and unknowns are in
 [architecture](architecture.md).
@@ -25,8 +26,8 @@ GitHub audit evidence and precise proposed settings are in
 ## Outstanding work and implementation order
 
 1. Review CI evidence and merge the foundation PR.
-2. Approve repository protection, native secret scanning/push protection and dependency
-   security settings; appoint a second reviewer before requiring independent approval.
+2. Maintain the approved repository security settings; appoint a second reviewer
+   before requesting independent approval enforcement.
 3. Obtain missing runbooks and privately verify active host, accounts, domains, data
    stores, service integrations, runtime and operational owners.
 4. Resolve application packaging/type-checking/release blockers in separate app PRs.
@@ -34,9 +35,9 @@ GitHub audit evidence and precise proposed settings are in
 6. Implement justified IaC and private-app CI after architecture approval.
 7. Prove staging deployment/recovery, then seek explicit production approval.
 
-Remaining risks include unprotected main branches, disabled public native secret
-protection, unverified private security features and incomplete production evidence.
-An initial PR cannot enforce its own checks on main before approval and merge.
+Remaining risks include the other repositories' unprotected main branches/disabled
+public native secret protection, unverified private security features and incomplete
+production evidence. Main's workflow and ownership files await PR merge.
 ## Validation evidence
 
 Local repository guardrails, YAML lint, Git whitespace validation, environment/key
@@ -51,3 +52,13 @@ includes checksum verification and Gitleaks scans of publishable files and reach
 Git history; no findings were reported. The local Windows release download stalled
 and was cancelled; the successful hosted Linux scan supplies full-scan evidence.
 No secret-scanning result is claimed for the private application repository.
+
+## Approved GitHub security configuration follow-up
+
+User approval to continue was applied only to mysaji-infra. Main ruleset `25195553`
+is active: PRs and both successful Actions checks are required, the branch must be
+current with main, and force pushes/deletion are blocked except for administrator
+emergency bypass. Independent approval count remains zero. Native secret scanning,
+push protection and Dependabot security updates are enabled; dependency alerts remain
+enabled. All states were read back from GitHub. Organization access and sibling
+repository settings were preserved. See the governance document for recovery details.
